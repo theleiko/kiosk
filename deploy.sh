@@ -2,10 +2,10 @@
 set -x
 set -e
 
-cp -r filesystem/opt /opt
-cp -r filesystem/boot /boot
-cp -r filesystem/home /home
-cp -r filesystem/home /etc
+cp -r filesystem/opt /
+cp -r filesystem/boot /
+cp -r filesystem/home /
+cp -r filesystem/etc /
 
 apt-get update
 
@@ -21,7 +21,7 @@ apt-get remove -y --purge  $remove_extra
 apt-get autoremove -y
 
 #apt-get tools
-apt-get -y install git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect feh pulseaudio chromium x11vnc unclutter-xfixes
+apt-get -y install git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect feh pulseaudio chromium x11vnc unclutter-xfixes mc htop
 
 sed -i 's@%BROWSER_START_SCRIPT%@/opt/custompios/scripts/start_chromium_browser@g' /opt/custompios/scripts/run_onepageos
 
