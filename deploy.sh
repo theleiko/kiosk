@@ -2,9 +2,10 @@
 set -x
 set -e
 
-cp -r filesystem/opt /
-cp -r filesystem/boot /
-cp -r filesystem/root_init /
+cp -r filesystem/opt /opt
+cp -r filesystem/boot /boot
+cp -r filesystem/home /home
+cp -r filesystem/home /etc
 
 apt-get update
 
