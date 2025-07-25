@@ -14,9 +14,7 @@ systemctl enable splashscreen.service
 systemctl disable getty@tty1
 
 
-remove_extra=$(remove_if_installed scratch squeak-plugins-scratch squeak-vm python-minecraftpi minecraft-pi sonic-pi oracle-java8-jdk bluej greenfoot libreoffice-common libreoffice-core freepats)
-
-apt-get remove -y --purge  $remove_extra
+apt-get remove -y --purge  scratch squeak-plugins-scratch squeak-vm python-minecraftpi minecraft-pi sonic-pi oracle-java8-jdk bluej greenfoot libreoffice-common libreoffice-core freepats
 
 apt-get autoremove -y
 
