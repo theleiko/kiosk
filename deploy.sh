@@ -2,9 +2,9 @@
 set -x
 set -e
 
-cp ./filesystem/opt /
-cp ./filesystem/boot /
-cp ./filesystem/root_init /
+cp -r ./filesystem/opt /
+cp -r ./filesystem/boot /
+cp -r ./filesystem/root_init /
 
 apt-get update
 
