@@ -37,4 +37,4 @@ systemctl enable x11vnc.service
 apt-get clean
 apt-get autoremove -y
 
-chromium --app="https://extensions.gnome.org/extension/4099/no-overview/" &
+sed -i 's/#type=local/autologin-user=kiosk\nautologin-user-timeout=0\n#type=local/g' /etc/lightdm/lightdm.conf 
