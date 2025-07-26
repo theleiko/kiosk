@@ -39,9 +39,6 @@ sed -i 's@%BROWSER_START_SCRIPT%@/opt/custompios/scripts/start_chromium_browser@
 mkdir -p /opt/custompios/vnc
 chown ${USER}:${USER} /opt/custompios/vnc
 
-echo "Please provide vnc password:"
-read line
-
 sudo -u ${USER} /opt/custompios/scripts/setX11vncPass $line
 sync
 
