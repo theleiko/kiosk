@@ -29,7 +29,7 @@ chown kiosk:kiosk /opt/custompios/vnc
 echo "Please provide vnc password:"
 read line
 
-sudo -u pi /opt/custompios/scripts/setX11vncPass $line
+sudo -u kiosk /opt/custompios/scripts/setX11vncPass $line
 sync
 
 systemctl enable x11vnc.service
