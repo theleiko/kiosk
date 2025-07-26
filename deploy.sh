@@ -55,7 +55,7 @@ echo 'export DISPLAY=:0.0' >> /home/${USER}/.profile
 echo '/opt/custompios/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsession/LXDE/autostart
 
 sed -i '/GRUB_TIMEOUT=/d' /etc/default/grub
-echo 'GRUB_TIMEOUT=1' /etc/default/grub
+echo 'GRUB_TIMEOUT=1' >> /etc/default/grub
 update-grub
 
 sudo reboot now
