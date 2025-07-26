@@ -2,6 +2,7 @@
 
 flags=(
    --kiosk
+   --password-store=basic
    --touch-events=enabled
    --disable-pinch
    --noerrdialogs
@@ -29,6 +30,6 @@ tail -n 0 -F "$logfile" | while read LOGLINE &> /dev/null; do
 
    echo "Refreshing after crash"
    echo "Restarting at `date` after a reported crash. Logline: ${LOGLINE}" >> /tmp/crashlog
-   [[ ("${LOGLINE}" == *"ERROR"*) || ("${LOGLINE}" == *"FATAL"*) ]] && /home/$(id -nu 1000)/scripts/refresh
+   [[ ("${LOGLINE}" == *"ERROR"*) || ("${LOGLINE}" == *"FATAL"*) ]] && /opt/custompios/scripts/refresh
 
 done
