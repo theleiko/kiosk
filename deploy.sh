@@ -40,3 +40,4 @@ apt-get autoremove -y
 
 sed -i 's/#type=local/autologin-user=kiosk\nautologin-user-timeout=0\n#type=local/g' /etc/lightdm/lightdm.conf 
 
+echo 'export DISPLAY=:0.0' >> /home/kiosk/.profile
