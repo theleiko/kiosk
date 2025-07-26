@@ -24,9 +24,6 @@ apt-get install -y fbi
 systemctl enable splashscreen.service
 systemctl disable getty@tty1
 
-sudo -u ${USER} pcmanfm --set-wallpaper="/opt/custompios/background.png"
-
-
 apt-get remove -y --purge  scratch squeak-plugins-scratch squeak-vm libreoffice-common libreoffice-core freepats
 
 apt-get autoremove -y
@@ -49,12 +46,16 @@ apt-get autoremove -y
 
 sed -i 's/#type=local/autologin-user=${USER}\nautologin-user-timeout=0\n#type=local/g' /etc/lightdm/lightdm.conf 
 
-sed -i 's/kiosk/${USER}/g' /etc/sudoers.d/kiosk
+sed -i "s/kiosk/${USER}/g" /etc/sudoers.d/kiosk
 
-sed '/wallpaper=/d' /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
+sed -i '/wallpaper=/d' /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
 echo 'wallpaper=/opt/custompios/background.png"' /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
 
 echo 'export DISPLAY=:0.0' >> /home/${USER}/.profile
 echo '/opt/custompios/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsession/LXDE/autostart
+
+sed -i '/GRUB_TIMEOUT=/d' /etc/default/grub
+echo 'GRUB_TIMEOUT=1' /etc/default/grub
+update-grub
 
 sudo reboot now
