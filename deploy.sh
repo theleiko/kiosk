@@ -4,7 +4,6 @@ set -e
 
 cp -r filesystem/opt /
 cp -r filesystem/boot /
-cp -r filesystem/home /
 cp -r filesystem/etc /
 
 apt-get update
