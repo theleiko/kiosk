@@ -49,7 +49,7 @@ sed -i 's/#type=local/autologin-user=${USER}\nautologin-user-timeout=0\n#type=lo
 sed -i "s/kiosk/${USER}/g" /etc/sudoers.d/kiosk
 
 sed -i '/wallpaper=/d' /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
-echo 'wallpaper=/opt/custompios/background.png"' /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
+echo 'wallpaper=/opt/custompios/background.png' >> /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
 
 echo 'export DISPLAY=:0.0' >> /home/${USER}/.profile
 echo '/opt/custompios/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsession/LXDE/autostart
