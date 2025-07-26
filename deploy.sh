@@ -5,6 +5,9 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+echo "Please provide vnc password:"
+read line
+
 set -x
 set -e
 
