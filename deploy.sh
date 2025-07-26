@@ -12,7 +12,7 @@ apt-get install -y fbi
 systemctl enable splashscreen.service
 systemctl disable getty@tty1
 
-pcmanfm --set-wallpaper="/opt/custompios/background.png"
+sudo -u kiosk pcmanfm --set-wallpaper="/opt/custompios/background.png"
 
 
 apt-get remove -y --purge  scratch squeak-plugins-scratch squeak-vm libreoffice-common libreoffice-core freepats
