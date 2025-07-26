@@ -44,7 +44,7 @@ systemctl enable x11vnc.service
 apt-get clean
 apt-get autoremove -y
 
-sed -i 's/#type=local/autologin-user=${USER}\nautologin-user-timeout=0\n#type=local/g' /etc/lightdm/lightdm.conf 
+sed -i "s/#type=local/autologin-user=${USER}\nautologin-user-timeout=0\n#type=local/g" /etc/lightdm/lightdm.conf 
 
 sed -i "s/kiosk/${USER}/g" /etc/sudoers.d/kiosk
 
