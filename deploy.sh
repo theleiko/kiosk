@@ -56,3 +56,5 @@ sed -i 's/kiosk/${USER}/g' /etc/sudoers.d/kiosk
 
 echo 'export DISPLAY=:0.0' >> /home/${USER}/.profile
 echo '/opt/custompios/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsession/LXDE/autostart
+
+sudo reboot now
