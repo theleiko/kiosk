@@ -1,4 +1,6 @@
 # kiosk
+A quick deploy script to turn a Debian based system into a kiosk PC.
+Inspired and Forked from 'FullPageOS <https://github.com/guysoft/FullPageOS/tree/devel?tab=readme-ov-file>'
  
 ## 1. Install Debian
 - 10GB Disk should be sufficient
@@ -19,3 +21,5 @@ Target website can be set in /boot/firmware/kiosk.txt
     sudo echo 'https://time.is/' > /boot/firmware/kiosk.txt
 
 You can use {hostname} in the link, it will be replaced by the set hostname
+
+##
