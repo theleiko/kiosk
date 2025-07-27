@@ -1,12 +1,23 @@
 #!/usr/bin/env bash
 
+RED="\e[31m"
+GREEN="\e[32m"
+BLUE="\e[34m"
+WHITE="\e[97m"
+RED_BG="\e[41m"
+GREEN_BG="\e[42m"
+BLUE_BG="\e[44m"
+WHITE_BG="\e[107m"
+ENDCOLOR="\e[0m"
+
+
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "${RED_BG}${WHITE}This script must be run as root${ENDCOLOR}" 
    exit 1
 fi
 
-echo "Please provide vnc password:"
-read line
+echo "${BLUE}Please provide vnc password:${ENDCOLOR}"
+read vnc_password
 
 set -x
 set -e
@@ -31,12 +42,10 @@ apt-get autoremove -y
 #apt-get tools
 apt-get -y install git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect feh pulseaudio chromium x11vnc unclutter-xfixes mc htop
 
-sed -i 's@%BROWSER_START_SCRIPT%@/opt/kiosk/scripts/start_chromium_browser@g' /opt/kiosk/scripts/run_onepageos
-
 mkdir -p /opt/kiosk/vnc
 chown ${USER}:${USER} /opt/kiosk/vnc
 
-sudo -u ${USER} /opt/kiosk/scripts/setX11vncPass $line
+sudo -u ${USER} /opt/kiosk/scripts/setX11vncPass $vnc_password
 sync
 
 systemctl enable x11vnc.service
@@ -58,4 +67,7 @@ sed -i '/GRUB_TIMEOUT=/d' /etc/default/grub
 echo 'GRUB_TIMEOUT=1' >> /etc/default/grub
 update-grub
 
+echo "${GREEN_BG}Everything done, rebooting in 10 seconds...${ENDCOLOR}"
+
+sleep 10
 sudo reboot now
