@@ -31,12 +31,12 @@ apt-get autoremove -y
 #apt-get tools
 apt-get -y install git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect feh pulseaudio chromium x11vnc unclutter-xfixes mc htop
 
-sed -i 's@%BROWSER_START_SCRIPT%@/opt/custompios/scripts/start_chromium_browser@g' /opt/custompios/scripts/run_onepageos
+sed -i 's@%BROWSER_START_SCRIPT%@/opt/kiosk/scripts/start_chromium_browser@g' /opt/kiosk/scripts/run_onepageos
 
-mkdir -p /opt/custompios/vnc
-chown ${USER}:${USER} /opt/custompios/vnc
+mkdir -p /opt/kiosk/vnc
+chown ${USER}:${USER} /opt/kiosk/vnc
 
-sudo -u ${USER} /opt/custompios/scripts/setX11vncPass $line
+sudo -u ${USER} /opt/kiosk/scripts/setX11vncPass $line
 sync
 
 systemctl enable x11vnc.service
@@ -49,10 +49,10 @@ sed -i "s/#type=local/autologin-user=${USER}\nautologin-user-timeout=0\n#type=lo
 sed -i "s/kiosk/${USER}/g" /etc/sudoers.d/kiosk
 
 sed -i '/wallpaper=/d' /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
-echo 'wallpaper=/opt/custompios/background.png' >> /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
+echo 'wallpaper=/opt/kiosk/background.png' >> /home/${USER}/.config/pcmanfm/LXDE/desktop-items-0.conf
 
 echo 'export DISPLAY=:0.0' >> /home/${USER}/.profile
-echo '/opt/custompios/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsession/LXDE/autostart
+echo '/opt/kiosk/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsession/LXDE/autostart
 
 sed -i '/GRUB_TIMEOUT=/d' /etc/default/grub
 echo 'GRUB_TIMEOUT=1' >> /etc/default/grub

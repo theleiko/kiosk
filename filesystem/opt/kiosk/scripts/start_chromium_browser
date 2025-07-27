@@ -15,12 +15,12 @@ flags=(
 )
 
 # Standard behavior - runs chromium
-chromium "${flags[@]}" --app=$(/opt/custompios/scripts/get_url)
+chromium "${flags[@]}" --app=$(/opt/kiosk/scripts/get_url)
 exit;
 
 # Remove the two lines above to enable signage mode - refresh the browser whenever errors are seen in log
 
-chromium --enable-logging --log-level=2 --v=0 "${flags[@]}" --app=$(/opt/custompios/scripts/get_url) &
+chromium --enable-logging --log-level=2 --v=0 "${flags[@]}" --app=$(/opt/kiosk/scripts/get_url) &
 
 export logfile="/home/$(id -nu 1000)/.config/chromium/chrome_debug.log"
 
@@ -30,6 +30,6 @@ tail -n 0 -F "$logfile" | while read LOGLINE &> /dev/null; do
 
    echo "Refreshing after crash"
    echo "Restarting at `date` after a reported crash. Logline: ${LOGLINE}" >> /tmp/crashlog
-   [[ ("${LOGLINE}" == *"ERROR"*) || ("${LOGLINE}" == *"FATAL"*) ]] && /opt/custompios/scripts/refresh
+   [[ ("${LOGLINE}" == *"ERROR"*) || ("${LOGLINE}" == *"FATAL"*) ]] && /opt/kiosk/scripts/refresh
 
 done
