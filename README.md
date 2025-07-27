@@ -1,6 +1,6 @@
 # kiosk
  
-## 1. Install Debian with LXDE (!) & SSH
+## 1. Install Debian
 - 10GB Disk should be sufficient
 - don't set a root password
 - created user will be used as the main user for kiosk
@@ -12,3 +12,6 @@
     git clone https://github.com/theleiko/kiosk.git
     cd kiosk
     sudo ./deploy.sh
+
+## 3. Set target website
+Target website can be set in /boot/firmware/kiosk.txt
