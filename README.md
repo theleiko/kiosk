@@ -1,6 +1,6 @@
 # kiosk
 A quick deploy script to turn a Debian based system into a kiosk PC.
-Inspired and Forked from `FullPageOS <https://github.com/guysoft/FullPageOS/tree/devel?tab=readme-ov-file>`
+Inspired and Forked from [FullPageOS](https://github.com/guysoft/FullPageOS/tree/devel?tab=readme-ov-file)
  
 ## 1. Install Debian
 - 10GB Disk should be sufficient
