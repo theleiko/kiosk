@@ -12,12 +12,9 @@ ENDCOLOR="\e[0m"
 
 
 if [[ $EUID -ne 0 ]]; then
-   echo "${RED_BG}${WHITE}This script must be run as root${ENDCOLOR}" 
+   echo "This script must be run as root "
    exit 1
 fi
-
-echo "${BLUE}Please provide vnc password:${ENDCOLOR}"
-read vnc_password
 
 set -x
 set -e
@@ -39,11 +36,19 @@ apt-get remove -y --purge  scratch squeak-plugins-scratch squeak-vm libreoffice-
 
 apt-get autoremove -y
 
-#apt-get tools
-apt-get -y install git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect feh pulseaudio chromium x11vnc unclutter-xfixes mc htop
+read -p "Do you want to install unclutter to hide the cursor? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    apt-get -y install unclutter-xfixes 
+fi
+
+apt-get -y install git screen checkinstall avahi-daemon libavahi-compat-libdnssd1 xterm xdotool vim expect feh pulseaudio chromium x11vnc mc htop
 
 mkdir -p /opt/kiosk/vnc
 chown ${USER}:${USER} /opt/kiosk/vnc
+
+echo "Please provide vnc password:"
+read vnc_password
 
 sudo -u ${USER} /opt/kiosk/scripts/setX11vncPass $vnc_password
 sync
@@ -67,7 +72,12 @@ sed -i '/GRUB_TIMEOUT=/d' /etc/default/grub
 echo 'GRUB_TIMEOUT=1' >> /etc/default/grub
 update-grub
 
-echo "${GREEN_BG}Everything done, rebooting in 10 seconds...${ENDCOLOR}"
+echo "Please provide Link to the target page:"
+read target_link
+
+echo target_link > /boot/firmware/kiosk.txt
+
+echo "Everything done, rebooting in 10 seconds..."
 
 sleep 10
 sudo reboot now
