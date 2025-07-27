@@ -15,5 +15,7 @@
 
 ## 3. Set target website
 Target website can be set in /boot/firmware/kiosk.txt
+
     sudo echo 'https://time.is/' > /boot/firmware/kiosk.txt
+
 You can use {hostname} in the link, it will be replaced by the set hostname
