@@ -1,5 +1,5 @@
 #!/bin/bash
 
 SERIAL=`cat /proc/cpuinfo | grep -i '^Serial' | awk '{ print $3 }'`
-URL="$(head -n 1 /boot/firmware/fullpageos.txt | sed -e "s/{hostname}/$(hostname)/g")"
+URL="$(head -n 1 /boot/firmware/kiosk.txt | sed -e "s/{hostname}/$(hostname)/g")"
 echo $URL
