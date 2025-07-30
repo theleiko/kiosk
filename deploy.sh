@@ -70,12 +70,14 @@ echo '/opt/kiosk/scripts/start_chromium_browser' >> /home/${USER}/.config/lxsess
 
 sed -i '/GRUB_TIMEOUT=/d' /etc/default/grub
 echo 'GRUB_TIMEOUT=1' >> /etc/default/grub
+echo "GRUB_BACKGROUND=/boot/firmware/splash.png" >> /etc/default/grub
+
 update-grub
 
 echo "Please provide Link to the target page:"
 read target_link
 
-echo target_link > /boot/firmware/kiosk.txt
+echo ${target_link} > /boot/firmware/kiosk.txt
 
 echo "Everything done, rebooting in 10 seconds..."
 
